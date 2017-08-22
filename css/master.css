@@ -19,7 +19,6 @@ ul {
 
 li {
     display: inline-block;
-    float: left;
     margin-right: 1px;
 }
 
@@ -35,12 +34,12 @@ li {
 .header {
   margin: 0 auto;
   display: grid;
+  align-content: space-between;
   grid-template-columns: repeat(9,1fr);
   grid-template-rows: 4em;
   grid-template-areas:
         "a a a a a b b b b";
   max-height: 4em;
-  overflow: hidden;
 }
 
 .header__title, #nav {
@@ -59,9 +58,28 @@ li {
   padding-top: 0.5em;
 }
 
+/*Navigation bar subgrid*/
+
 #nav {
-  padding-top: 2.6em;
+  display: inline-grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-areas:
+      "x y z";
+  align-items: end;
   grid-area: b;
+}
+
+#nav__item1 {
+  grid-area: x;
+  margin-left: 1.5em;
+}
+
+#nav__item2 {
+  grid-area: y;
+}
+
+#nav__item3 {
+  grid-area: z;
 }
 
 #nav ul {
@@ -70,48 +88,37 @@ li {
 }
 
 .nav__item {
+  font-weight: 200;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.4em;
-  color: #fff;
   text-decoration: none;
-  margin-right: 1em;
   letter-spacing: 0.2em;
 }
 
+
+
 /*Link decoration*/
 
-ul a {
+li a {
   text-decoration: none;
   color: black;
 }
 
-ul a:hover {
+li a:hover {
   text-decoration: underline;
   color: #212121;
 }
 
 
-/*Menu button styling*/
+/*Jumbo styling*/
 
-.navbtn {
-  display: none;
-  height: 100%;
-  background-color: #a0ffa3;
+#jumbo {
+  background-image: url(images/avocados_1920.jpg);
 }
 
-#hoverbtn {
-  background-color: #a0ffa3;
-  border-style: none;
-  position: absolute;
-}
 
-.menu__line {
-    border: none;
-    width: 30px;
-    height: 3px;
-    background-color: black;
-    margin-top: calc(33.33%);
-}
+
+
 
 @media only screen and (max-width: 900px) {
 
@@ -128,50 +135,39 @@ ul a:hover {
 @media only screen and (max-width: 680px) {
 
   .header {
-    grid-template-rows: 3em 3em;
+    grid-template-rows: 2.8em 2.8em;
     grid-template-areas:
-        "a a a a a a a a b"
-        "c c c c c c c c c"
+        "a a a a a a a a a"
+        "b b b b b b b b b"
   }
 
-  ul {
-      position: static;
-      display: none;
+  .header__title {
+    font-size: 1.6em;
+    padding-top: 0.3em;
+    text-align: center;
   }
 
-  .navbtn {
-    display: inline;
-    grid-area: b;
-  }
 
   #nav {
-    display: none;
-    width: 100%;
-    grid-area: c;
+    display: inline-grid;
+    grid-area: b;
+    align-items: start;
     background-color: white;
+    padding-top: 0.1em;
   }
-
-  /*#nav__list {
-    position: absolute;
-    display: none;
-    border-bottom: 2px solid #515151;
-    z-index: 1;
-    background-color: white;
-    left: 0;
-    top: 3.2em;
-    width: 100%;
-  }*/
 
   .nav__item {
-    align-content: center;
-    width: 25%;
-    font-size: 1em;
-  }
-
-  #hoverbtn:hover ~ #nav, #nav:hover {
-    display: block;
     text-align: center;
-    align-content: center;
   }
 
+
+
+  .header__title:hover {
+    font-size: 1.7em;
+    padding-top: 0.25em;
+  }
+
+  /*#hoverbtn:hover {
+    background-color: red;
+  }*/
 }
